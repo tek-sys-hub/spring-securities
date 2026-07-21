@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
+    // Set the mapping for homepage
     @GetMapping("/")
     public String greet (){
         return "Welcome to cherry hub";
