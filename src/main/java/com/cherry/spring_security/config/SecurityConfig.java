@@ -17,15 +17,16 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain (HttpSecurity https) {
 
         // Disable csrf
-        https.csrf(customizer -> customizer.disable());
+        https.csrf(customizer -> customizer.disable())
         // Authorize the new user
-        https.authorizeHttpRequests(requests -> requests.anyRequest().authenticated());
+                .authorizeHttpRequests(requests -> requests.anyRequest().authenticated())
         // Use the default value to login now
-        https.formLogin(Customizer.withDefaults());
+                .formLogin(Customizer.withDefaults())
         // For clients like postman
-        https.httpBasic(Customizer.withDefaults());
+                .httpBasic(Customizer.withDefaults())
         // Create A New Session Id In Every Request
-        https.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+                .sessionManagement(session ->
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
 
         return https.build();
